@@ -7,7 +7,16 @@ class PostsController < ApplicationController
 
 
 	def create
-		render text: params[:post].inspect
+
+		# this one just showed the key/value pair
+#		render text: params[:post].inspect
+
+		# params[:post] contains the attributes we're interested in
+		@post = Post.new(params[:post])
+		
+		# @post.save is responsible for saving the model in the database
+		@post.save
+		redirect_to @post
 
 	end
 
