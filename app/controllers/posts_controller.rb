@@ -16,11 +16,24 @@ class PostsController < ApplicationController
 		# @post = Post.new(params[:post])
 
 		# need to change for "strong_parameters" security
-		@post = Post.new(post_params)
+		# @post = Post.new(post_params)
 		
 		# @post.save is responsible for saving the model in the database
-		@post.save
-		redirect_to @post
+		# @post.save
+		# redirect_to @post
+
+		@post = Post.new(params[:post])
+		if @post.save
+			flash[:notice] = "Post has been created."
+			redirect_to @post
+		else
+			flash[:notice] = "Post has not been created."
+			render :action => "new"
+		end
+
+
+	end
+
 
 	end
 
