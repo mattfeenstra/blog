@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 		# @post.save
 		# redirect_to @post
 
-		@post = Post.new(params[:post])
+		@post = Post.new(post_params)
 		if @post.save
 			flash[:notice] = "Post has been created."
 			redirect_to @post
